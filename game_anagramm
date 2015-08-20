@@ -1,0 +1,62 @@
+## Игра "Анаграммы"
+
+import random;
+
+WORDS = [
+    "СТОЛ",
+    "ЗАМОК",
+    "СТУЛ",
+    "ЕНОТ",
+    "КАРМА",
+    "НЕДЕЛЯ",
+    "ПАСХА",
+    "КАРТА",
+    "ОЧКИ",
+    "МАШИНА",
+    "ЗАВОД",
+    "КОМПЬЮТЕР",
+    "СОБАКА",
+    "КОШКА",
+    ];
+
+print("Игра \"Анаграммы\"");
+print("Для выхода оставьтте ввод пустым", end = "\n\n");
+
+
+inp = "YAY"
+
+while inp != "":
+    r = random.randrange(0, len(WORDS));
+    word = WORDS[r];
+    
+    iters = random.randrange(int(len(word)/2), len(word));
+    
+    for _ in range(iters):
+        newstr = "";
+        
+        r1 = random.randrange(0, len(word));
+        r2 = random.randrange(0, len(word));
+        c1 = word[r1]; c2 = word[r2];
+
+        for i in range(len(word)):
+            if i == r1:
+                newstr += c2;
+            elif i == r2:
+                newstr += c1;
+            else:
+                newstr += word[i];
+        
+        word = newstr;
+
+    for i in range(len(word)):
+        print(word[i], end = ".");
+    print("");
+
+    inp = input(">");
+
+    if inp.upper() == WORDS[r]:
+        print("Ты угадал!");
+    else:
+        print("Ты не угадал!");
+        
+    input("");
